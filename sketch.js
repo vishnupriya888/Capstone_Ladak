@@ -3,6 +3,15 @@ var gameState = "noshow";
 var temp = 0;
 var red, blue;
 var col = "";
+var totalBlue = 0,
+  totalRed = 0;
+var win = [
+  [0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0],
+];
 function preload() {
   map_img = loadImage("map.png");
   r_img = loadImage("red.png");
@@ -209,6 +218,12 @@ function draw() {
     gameState = "e5";
   }
   show();
+  if (gameState == "end") {
+    background("lightgreen");
+    text("Awesome!", 300, 400);
+    loc.hide();
+    checkTemp.hide();
+  }
 }
 function showTemp() {
   locate = loc.value();
@@ -301,106 +316,141 @@ function choose() {
     col = "red";
   }
 }
+function check(col, i, j) {
+  if (col == "blue") {
+    win[i][j] = 1;
+  } else if (col == "red") {
+    win[i][j] = -1;
+  }
+  if (win[0][0] == 1) {
+    gameState = "end";
+  }
+}
 function show() {
   if (gameState === "a1") {
     choose();
     a1.visible = true;
     a1.shapeColor = col;
+    check(col, 0, 0);
   } else if (gameState === "b1") {
     choose();
     b1.visible = true;
     b1.shapeColor = col;
+    check(col, 0, 1);
   } else if (gameState === "c1") {
     choose();
     c1.visible = true;
     c1.shapeColor = col;
+    check(col, 0, 2);
   } else if (gameState === "d1") {
     choose();
     d1.visible = true;
     d1.shapeColor = col;
+    check(col, 0, 3);
   } else if (gameState === "e1") {
     choose();
     e1.visible = true;
     e1.shapeColor = col;
+    check(col, 0, 4);
   } else if (gameState === "a2") {
     choose();
     a2.visible = true;
     a2.shapeColor = col;
+    check(col, 1, 0);
   } else if (gameState === "b2") {
     choose();
     b2.visible = true;
     b2.shapeColor = col;
+    check(col, 1, 1);
   } else if (gameState === "c2") {
     choose();
     c2.visible = true;
     c2.shapeColor = col;
+    check(col, 1, 2);
   } else if (gameState === "d2") {
     choose();
     d2.visible = true;
     d2.shapeColor = col;
+    check(col, 1, 3);
   } else if (gameState === "e2") {
     choose();
     e2.visible = true;
     e2.shapeColor = col;
+    check(col, 1, 4);
   } else if (gameState === "a3") {
     choose();
     a3.visible = true;
     a3.shapeColor = col;
+    check(col, 2, 0);
   } else if (gameState === "b3") {
     choose();
     b3.visible = true;
     b3.shapeColor = col;
+    check(col, 2, 1);
   } else if (gameState === "c3") {
     choose();
     c3.visible = true;
     c3.shapeColor = col;
+    check(col, 2, 2);
   } else if (gameState === "d3") {
     choose();
     d3.visible = true;
     d3.shapeColor = col;
+    check(col, 2, 3);
   } else if (gameState === "e3") {
     choose();
     e3.visible = true;
     e3.shapeColor = col;
+    check(col, 2, 4);
   } else if (gameState === "a4") {
     choose();
     a4.visible = true;
     a4.shapeColor = col;
+    check(col, 3, 0);
   } else if (gameState === "b4") {
     choose();
     b4.visible = true;
     b4.shapeColor = col;
+    check(col, 3, 1);
   } else if (gameState === "c4") {
     choose();
     c4.visible = true;
     c4.shapeColor = col;
+    check(col, 3, 2);
   } else if (gameState === "d4") {
     choose();
     d4.visible = true;
     d4.shapeColor = col;
+    check(col, 3, 3);
   } else if (gameState === "e4") {
     choose();
     e4.visible = true;
     e4.shapeColor = col;
+    check(col, 3, 4);
   } else if (gameState === "a5") {
     choose();
     a5.visible = true;
     a5.shapeColor = col;
+    check(col, 4, 0);
   } else if (gameState === "b5") {
     choose();
     b5.visible = true;
     b5.shapeColor = col;
+    check(col, 4, 1);
   } else if (gameState === "c5") {
     choose();
     c5.visible = true;
     c5.shapeColor = col;
+    check(col, 4, 2);
   } else if (gameState === "d5") {
     choose();
     d5.visible = true;
     d5.shapeColor = col;
+    check(col, 4, 3);
   } else if (gameState === "e5") {
     choose();
     e5.visible = true;
     e5.shapeColor = col;
+    check(col, 4, 4);
   }
 }
