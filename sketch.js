@@ -322,7 +322,7 @@ function check(col, i, j) {
   } else if (col == "red") {
     win[i][j] = -1;
   }
-  if (win[0][0] == 1) {
+  if (win[2][2] == 1) {
     gameState = "end";
   }
 }
