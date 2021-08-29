@@ -163,7 +163,7 @@ function draw() {
   drawSprites();
   fill("black");
   textSize(25);
-  text(World.mouseX + "," + World.mouseY, World.mouseX, World.mouseY);
+  // text(World.mouseX + "," + World.mouseY, World.mouseX, World.mouseY);
   if (gameState === "end" || gameState === "gph") {
     textSize(20);
     text(
